@@ -11,7 +11,6 @@ int p(int x){
     int l = 0;
     int i = 0;
     while (i < n){
-        if(l > k - 1) return 0;
         if (A[i] < x){
             int j = 1;
             int B = A[i] + A[i+j];
@@ -19,15 +18,18 @@ int p(int x){
                 if (i + j > n - 1) {
                     i ++;
                     break;
-                }                
+                }
                 else if(B < x){
                     B = B + A[j+1];
                     j++;
             }
                 else if (B == x){
                      i = i + j +1;
-                    l++;
-                    break;
+                     if (i < n){
+                       l++;
+                       break;
+                     }
+                     else break;
             }
                 else {
                     i = i + j;
